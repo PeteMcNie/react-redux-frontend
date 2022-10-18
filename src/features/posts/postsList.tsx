@@ -4,7 +4,7 @@ import { useAppSelector } from '../../app/hooks'
 export const PostsList: React.FunctionComponent = () => {
   const posts = useAppSelector(state => state.posts)
 
-  const renderedPosts = posts.data.map((post: any) => (
+  const renderedPosts = posts.map((post: any) => (
     <div key={post.id}>
       <h3>{post.title}</h3>
       <p>{post.content.substring(0, 100)}</p>
