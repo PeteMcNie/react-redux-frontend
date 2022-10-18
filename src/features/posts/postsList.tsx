@@ -1,20 +1,20 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../app/hooks'
 
-export const PostsList = () => {
-  const posts = useSelector(state => state.posts)
+export const PostsList: React.FunctionComponent = () => {
+  const posts = useAppSelector(state => state.posts)
 
-  const renderedPosts = posts.map(post => (
-    <article className="post-excerpt" key={post.id}>
+  const renderedPosts = posts.data.map((post: any) => (
+    <div key={post.id}>
       <h3>{post.title}</h3>
-      <p className="post-content">{post.content.substring(0, 100)}</p>
-    </article>
+      <p>{post.content.substring(0, 100)}</p>
+    </div>
   ))
 
   return (
-    <section className="posts-list">
+    <div>
       <h2>Posts</h2>
       {renderedPosts}
-    </section>
+    </div>
   )
 }

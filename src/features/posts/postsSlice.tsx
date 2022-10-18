@@ -1,23 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
-// import type { RootState } from '../../store'
 
-interface InitialStateItem {
-  id: string
-  title: string
-  content: string
+// const initialState = [
+//     { id: '1', title: 'First Post!', content: 'Hello!' },
+//     { id: '2', title: 'Second Post', content: 'More text' }
+//   ]
+
+const initialState = {
+  data: [ { id: 1, title: 'hello', content: 'test here' } ],
+  status: null,
 }
-
-interface InitialState extends Array<InitialStateItem>{}
-
-const initialState = [
-    { id: '1', title: 'First Post!', content: 'Hello!' },
-    { id: '2', title: 'Second Post', content: 'More text' }
-  ]
   
   const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    reducers: {}
+    reducers: {
+      postAdded(state, action) {
+        state.data.push(action.payload)
+      }
+    }
   })
   
+  export const { postAdded } = postsSlice.actions
   export default postsSlice.reducer
